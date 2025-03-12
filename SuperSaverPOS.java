@@ -1,4 +1,5 @@
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -27,7 +28,8 @@ public class SuperSaverPOS {
                 System.out.println("1. New Bill");
                 System.out.println("2. Retrieve Pending Bill");
                 System.out.println("3. Show All Pending Bills");
-                System.out.println("4. Exit");
+                System.out.println("4. Generate Revenue Report");
+                System.out.println("5. Exit");
                 System.out.print("Select an option: ");
                 int option = scanner.nextInt();
                 scanner.nextLine();  // Consume newline
@@ -39,6 +41,8 @@ public class SuperSaverPOS {
                 } else if (option == 3) {
                     pos.showPendingBills();
                 } else if (option == 4) {
+                    generateRevenueReport(scanner);
+                } else if (option == 5) {
                     System.out.println("Exiting SuperSaver POS. Goodbye!");
                     break;
                 } else {
@@ -128,6 +132,53 @@ public class SuperSaverPOS {
             bill.generatePDF("Bill_" + billId + ".txt");
             System.out.println("Bill finalized and saved as PDF.");
         }
+    }
+    
+    /** Generates a revenue report based on finalized bill files */
+    private static void generateRevenueReport(Scanner scanner) {
+        System.out.print("Enter Start Date (yyyy-MM-dd): ");
+        LocalDate startDate = LocalDate.parse(scanner.nextLine());
+        System.out.print("Enter End Date (yyyy-MM-dd): ");
+        LocalDate endDate = LocalDate.parse(scanner.nextLine());
+
+        File folder = new File(".");
+        File[] files = folder.listFiles((dir, name) -> name.startsWith("Bill_") && name.endsWith(".txt"));
+        
+        double totalRevenue = 0.0;
+        
+        if (files != null) {
+            for (File file : files) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    String firstLine = reader.readLine();
+                    if (firstLine != null && firstLine.contains("Bill Receipt")) {
+                        String dateLine = reader.readLine();
+                        LocalDate billDate = LocalDate.parse(dateLine.split(": ")[1].split(" ")[0]);
+                        
+                        if (!billDate.isBefore(startDate) && !billDate.isAfter(endDate)) {
+                            String lastLine = "";
+                            String currentLine;
+                            while ((currentLine = reader.readLine()) != null) {
+                                lastLine = currentLine;
+                            }
+                            totalRevenue += Double.parseDouble(lastLine.split("Rs.")[1]);
+                        }
+                    }
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Error reading bill file: " + file.getName());
+                }
+            }
+        }
+        
+        String reportFileName = "Revenue_Report_" + startDate + "_to_" + endDate + ".txt";
+        try (PrintWriter writer = new PrintWriter(new FileWriter(reportFileName))) {
+            writer.println("Super-Saving Supermarket - Revenue Report");
+            writer.println("Date Range: " + startDate + " to " + endDate);
+            writer.println("Total Revenue: Rs." + totalRevenue);
+        } catch (IOException e) {
+            System.out.println("Error writing revenue report.");
+        }
+        
+        System.out.println("Revenue Report generated: " + reportFileName);
     }
     
 }

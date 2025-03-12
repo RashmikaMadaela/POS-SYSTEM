@@ -1,0 +1,11 @@
+Super-Saving Supermarket - Bill Receipt
+Date & Time: 2025-03-12 10:22:08
+Cashier: Rashmika, Branch: Colombo, Customer: Shaluka
+
+Item Details:
+----------------------------------------------------
+Milk - Rs.250.00 (Discounted: Rs.225.00)
+Bread - Rs.150.00 (Discounted: Rs.142.50)
+Bread - Rs.150.00 (Discounted: Rs.142.50)
+
+Total Cost: Rs.510.0
