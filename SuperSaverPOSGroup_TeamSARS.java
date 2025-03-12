@@ -7,18 +7,42 @@ import java.util.*;
 /**
  * SuperSaverPOS - Team SARS
  * 
- * A Point of Sale (POS) system for the Super-Saving supermarket chain.
- * - Allows cashiers to enter item codes & quantities to generate a bill.
- * - Item details are fetched from a CSV file.
- * - Applies discounts (0-75%) & generates a printable bill.
- * - Supports pending bills and revenue reports.
+ * A user-friendly POS system for Super-Saving Supermarket. 
+ * Designed to make billing, tracking sales, and managing revenue effortless.
  * 
- * @author TeamSARS
- * @version 1.1
- * @date 2025-03-12
- */
+ * ================================
+ * 	Functional Requirements:
+ * ================================
+ *  1. Process new bills by adding item codes & quantities.
+ *  2. Fetch item details (price, size, expiry, etc.) from a CSV file.
+ *  3. Apply discounts automatically (0-75%).
+ *  4. Save bills as pending and retrieve them later.
+ *  5. Generate printable receipts for finalized bills.
+ *  6. Provide a revenue report for a given date range.
+ * 
+ * ================================
+ * 	Non-Functional Requirements:
+ * ================================
+ *  1. Fast & Responsive - Processes bills quickly with minimal delay.
+ *  2. Reliable - Prevents data loss by securely storing pending bills.
+ *  3. Easy to Use - Simple interface for cashiers with clear prompts.
+ *  4. Scalable - Can handle multiple items, discounts, and customers efficiently.
+ *  5. Maintainable - Well-structured code for future updates and improvements.
+ * 
+ * ================================
+ * 	Best Format to Save Data:
+ * ================================
+ *  1. CSV (Comma-Separated Values) → Stores inventory for easy updates.
+ *  2. Text Files (.txt) → Saves finalized bills & revenue reports in a readable format.
+ *  
+ * A seamless way to handle supermarket transactions while keeping things simple!
+ * 
+ * @author Team SARS
+ * @version 1.2
+ * @date 2025-03-12
+ */
 
-public class SuperSaverPOS {
+public class SuperSaverPOSGroup_TeamSARS {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             POSSystem pos = new POSSystem("items.csv");
