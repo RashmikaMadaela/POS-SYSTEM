@@ -87,7 +87,7 @@ public class SuperSaverPOS {
             System.out.println("Bill saved as pending with ID: " + billId);
         } else {
             bill.generatePDF("Bill_" + System.currentTimeMillis() + ".txt");
-            System.out.println("Bill finalized and saved as PDF.");
+            System.out.println("Bill finalized and saved as PDF like TXT.");
         }
     }
 
@@ -130,10 +130,10 @@ public class SuperSaverPOS {
             System.out.println("Bill saved as pending with ID: " + newBillId);
         } else {
             bill.generatePDF("Bill_" + billId + ".txt");
-            System.out.println("Bill finalized and saved as PDF.");
+            System.out.println("Bill finalized and saved as PDF like TXT.");
         }
     }
-    
+
     /** Generates a revenue report based on finalized bill files */
     private static void generateRevenueReport(Scanner scanner) {
         System.out.print("Enter Start Date (yyyy-MM-dd): ");
