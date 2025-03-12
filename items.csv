@@ -1,0 +1,11 @@
+ItemCode,ItemName,Price (LKR),Weight/Size,ManufactureDate,ExpiryDate,Manufacturer,Discount (%)
+101,Milk,250,1L,2025-01-10,2025-05-10,DairyCo,10
+102,Bread,150,500g,2025-02-15,2025-04-15,BakeHouse,5
+103,Apple,300,1kg,2025-03-01,2025-03-15,FruilFarm,15
+104,Eggs,200,12pcs,2025-02-20,2025-03-20,EggFarm,0
+105,Rice,200,5kg,2025-01-25,2026-01-25,AgroFoods,8
+106,Sugar,180,1kg,2025-03-10,2025-09-10,SweetCo,12
+107,Chicken,900,1.5kg,2025-02-05,2025-05-05,PoultryCo,20
+108,Butter,120,100g,2025-01-15,2025-04-15,DairyCo,3
+109,Flour,200,1kg,2025-02-01,2025-08-01,BakeHouse,7
+110,Cheese,500,500g,2025-03-05,2025-09-05,DairyCo,25
